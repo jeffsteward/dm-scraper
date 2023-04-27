@@ -29,7 +29,7 @@ def get_song_list(url):
 	soup = BeautifulSoup(response.text, 'html.parser')
 	song_list = soup.find(id='listAlbum')
 	for song in song_list.find_all('a', target='_blank'):
-		songs.append((song.text, song['href'].replace('../', 'https://www.azlyrics.com/')))
+		songs.append((song.text, f'https://www.azlyrics.com{song["href"]}'))
 
 	return songs
 
